@@ -52,19 +52,20 @@ ncsearch - search chromium
 ngsearch - search chrome
 newtab - tabs open tab
 dxpaste
-musicp - toggle pause/start
-slack - set focus slack
-music - set focus rhythmbox
-clock - set focus clock
-zapzap - whatsapp
-gmail
-heroku
-hubspot
-circle
-jira
-amazon aws
+.musicp - toggle pause/start
+.slack - set focus slack
+.music - set focus rhythmbox
+.clock - set focus clock
+.zapzap - whatsapp
+.gmail
+.heroku
+.hubspot
+.circle
+.jira
+.amazon aws
 a - chrome m2
-aa - chrome m1")
+aa - chrome m1
+aaa - chrome m2")
 
 choice=$(echo -e "$list" | dmenu -i -l 20 -b -m 3 -fn Monospace-16:normal)
 func=$(echo $choice | awk '{ print $1 }')
@@ -265,15 +266,15 @@ if [ "$func" == "kwd" ]; then
   bash /home/danilo/scripts/dmenu/kw.sh 2
 fi
 
-if [ "$func" == "slack" ]; then
+if [ "$func" == ".slack" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m4 slack.Slack &
 fi
 
-if [ "$func" == "music" ]; then
+if [ "$func" == ".music" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 rhythmbox.Rhythmbox &
 fi
 
-if [ "$func" == "musicp" ]; then
+if [ "$func" == ".musicp" ]; then
   rhythmbox-client --play-pause
 fi
 
@@ -285,41 +286,45 @@ if [ "$func" == "aa" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 google-chrome.Google-chrome &
 fi
 
-if [ "$func" == "clock" ]; then
+if [ "$func" == "aaa" ]; then
+  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome-beta.Google-chrome-beta &
+fi
+
+if [ "$func" == ".clock" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 gnome-clocks.Gnome-clocks
 fi
 
-if [ "$func" == "zapzap" ]; then
+if [ "$func" == ".zapzap" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
   /home/danilo/scripts/dmenu/send_key.py ctrl1 &
 fi
 
-if [ "$func" == "gmail" ]; then
+if [ "$func" == ".gmail" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
   /home/danilo/scripts/dmenu/send_key.py ctrl2 &
 fi
 
-if [ "$func" == "circle" ]; then
+if [ "$func" == ".circle" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
   /home/danilo/scripts/dmenu/send_key.py ctrl3 &
 fi
 
-if [ "$func" == "jira" ]; then
+if [ "$func" == ".jira" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
   /home/danilo/scripts/dmenu/send_key.py ctrl4 &
 fi
 
-if [ "$func" == "heroku" ]; then
+if [ "$func" == ".heroku" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
   /home/danilo/scripts/dmenu/send_key.py ctrl5 &
 fi
 
-if [ "$func" == "amazon" ]; then
+if [ "$func" == ".amazon" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
   /home/danilo/scripts/dmenu/send_key.py ctrl6 &
 fi
 
-if [ "$func" == "hubspot" ]; then
+if [ "$func" == ".hubspot" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 google-chrome.Google-chrome
   /home/danilo/scripts/dmenu/send_key.py ctrl1 &
 fi
