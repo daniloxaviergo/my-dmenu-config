@@ -65,9 +65,14 @@ dxpaste
 .amazon aws
 a - chrome m2
 aa - chrome m1
-aaa - chrome m2")
+aaa - chrome beta m2
+.skip add
+reload list windows")
 
-choice=$(echo -e "$list" | dmenu -i -l 20 -b -m 3 -fn Monospace-16:normal)
+list_windows="$(cat /home/danilo/scripts/dmenu/list_windows | awk '{ s = ""; for (i = 2; i <= NF-1; i++) s = s $i " "; print $NF, s }')"
+nlist=$list$list_windows
+
+choice=$(echo -e "$nlist" | dmenu -i -l 20 -b -m 3 -fn Monospace-16:normal)
 func=$(echo $choice | awk '{ print $1 }')
 
 if [ "$func" == ".r" ]; then
@@ -327,6 +332,21 @@ fi
 if [ "$func" == ".hubspot" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 google-chrome.Google-chrome
   /home/danilo/scripts/dmenu/send_key.py ctrl1 &
+fi
+
+if [ "$func" == ".skip" ]; then
+  /home/danilo/scripts/dmenu/skip_add.py
+fi
+
+if [ "$func" == "reload" ]; then
+  /home/danilo/scripts/dmenu/reload_list_windows.sh
+fi
+
+firstChar=$(echo "$func" | awk '{print substr($0,1,1)}')
+monitor=$(echo "$func" | awk '{print substr($0,3,1)}')
+
+if [ "$firstChar" == "k" ] && [ "$monitor" == "m" ]; then
+  /home/danilo/scripts/dmenu/goto_list_windows.sh "$choice"
 fi
 
 pkill dzen2
