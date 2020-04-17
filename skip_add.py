@@ -10,6 +10,6 @@ import pyautogui
 
 pyautogui.moveTo(7507, 2133)
 pyautogui.press('m', interval=0.5)
-time.sleep(4)
+time.sleep(5.5)
 pyautogui.click()
 pyautogui.press('m', interval=0.0)

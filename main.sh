@@ -67,7 +67,7 @@ a - chrome m2
 aa - chrome m1
 aaa - chrome beta m2
 .skip add
-reload list windows")
+.reload list windows")
 
 list_windows="$(cat /home/danilo/scripts/dmenu/list_windows | awk '{ s = ""; for (i = 2; i <= NF-1; i++) s = s $i " "; print $NF, s }')"
 nlist=$list$list_windows
@@ -338,7 +338,7 @@ if [ "$func" == ".skip" ]; then
   /home/danilo/scripts/dmenu/skip_add.py
 fi
 
-if [ "$func" == "reload" ]; then
+if [ "$func" == ".reload" ]; then
   /home/danilo/scripts/dmenu/reload_list_windows.sh
 fi
 
