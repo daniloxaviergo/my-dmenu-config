@@ -52,6 +52,7 @@ ncsearch - search chromium
 ngsearch - search chrome
 newtab - tabs open tab
 dxpaste
+dxpaste2
 .musicp - toggle pause/start
 .slack - set focus slack
 .music - set focus rhythmbox
@@ -67,7 +68,9 @@ a - chrome m2
 aa - chrome m1
 aaa - chrome beta m2
 .skip add
-.reload list windows")
+.reload list windows
+.ui1 localhost ui
+.ui2 localhost ui2")
 
 list_windows="$(cat /home/danilo/scripts/dmenu/list_windows | awk '{ s = ""; for (i = 2; i <= NF-1; i++) s = s $i " "; print $NF, s }')"
 nlist=$list$list_windows
@@ -140,6 +143,10 @@ if [ "$func" == ".kd" ]; then
 fi
 
 if [ "$func" == "dxpaste" ]; then
+  /home/danilo/scripts/select_copy.py &
+fi
+
+if [ "$func" == "dxpaste2" ]; then
   xfce4-popup-clipman
 fi
 
@@ -347,6 +354,16 @@ monitor=$(echo "$func" | awk '{print substr($0,3,1)}')
 
 if [ "$firstChar" == "k" ] && [ "$monitor" == "m" ]; then
   /home/danilo/scripts/dmenu/goto_list_windows.sh "$choice"
+fi
+
+if [ "$func" == ".ui1" ]; then
+  /home/danilo/scripts/dmenu/focus_class_name.py k2m1 chromium.Chromium
+  /home/danilo/scripts/dmenu/send_key.py ctrl2 &
+fi
+
+if [ "$func" == ".ui2" ]; then
+  /home/danilo/scripts/dmenu/focus_class_name.py k2m1 chromium.Chromium
+  /home/danilo/scripts/dmenu/send_key.py ctrl3 &
 fi
 
 pkill dzen2
