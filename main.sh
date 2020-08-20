@@ -70,7 +70,8 @@ aaa - chrome beta m2
 .skip add
 .reload list windows
 .ui1 localhost ui
-.ui2 localhost ui2")
+.ui2 localhost ui2
+fff favority files")
 
 list_windows="$(cat /home/danilo/scripts/dmenu/list_windows | awk '{ s = ""; for (i = 2; i <= NF-1; i++) s = s $i " "; print $NF, s }')"
 nlist=$list$list_windows
@@ -364,6 +365,10 @@ fi
 if [ "$func" == ".ui2" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k2m1 chromium.Chromium
   /home/danilo/scripts/dmenu/send_key.py ctrl3 &
+fi
+
+if [ "$func" == "fff" ]; then
+  /home/danilo/scripts/thunar-open-file.py &
 fi
 
 pkill dzen2
