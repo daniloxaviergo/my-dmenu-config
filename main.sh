@@ -79,6 +79,8 @@ nlist=$list$list_windows
 choice=$(echo -e "$nlist" | dmenu -i -l 20 -b -m 3 -fn Monospace-16:normal)
 func=$(echo $choice | awk '{ print $1 }')
 
+echo "$func" >> /home/danilo/scripts/dmenu/history
+
 if [ "$func" == ".r" ]; then
   $(/home/danilo/scripts/goto_saved_window.py s6)
 fi
