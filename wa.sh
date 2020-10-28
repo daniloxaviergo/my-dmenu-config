@@ -36,5 +36,6 @@ if [ "$choice" == "" ]; then
 fi
 
 wid=$(echo -e "$lines" | grep "$choice" | awk '{ print $1 }')
-# wmctrl -s $cw && sleep 0.01s
+wworkspace=$(wmctrl -dliGx | grep "$wid" | awk '{ print $2 }')
+wmctrl -s $wworkspace && sleep 0.01s
 wmctrl -i -a $wid
