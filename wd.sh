@@ -2,9 +2,9 @@
 
 # janelas do terceiro monitor workspace atual
 
-bscreen=6777 # begin screen
+bscreen=7679 # begin screen
 escreen=9178 # end screen
-topscreen=1349 # top porque tem monitor no alto
+topscreen=1300 # top porque tem monitor no alto
 
 
 if [ "$1" == "" ]; then
@@ -12,8 +12,6 @@ if [ "$1" == "" ]; then
 else
   cw=$1
 fi
-
-
 
 wid=''
 lines=''
@@ -28,7 +26,7 @@ while read -r line ; do
     then
       if [ "$top" -gt "$topscreen" ]
       then
-        if [ "$workspace" -eq "$cw" ]
+        if [ "$workspace" = "$cw" ] || [ "$cw" = "all" ]
         then
           if [ -z "$wid" ]
           then
@@ -47,5 +45,5 @@ if [ "$choice" == "" ]; then
 fi
 
 wid=$(echo -e "$lines" | grep "$choice" | awk '{ print $1 }')
-wmctrl -s $cw && sleep 0.01s
+# wmctrl -s $cw && sleep 0.01s
 wmctrl -i -a $wid

@@ -2,9 +2,9 @@
 
 # janelas do segundo monitor workspace atual
 
-bscreen=2937 # begin screen
-escreen=6778 # end screen
-topscreen=0 # top porque tem monitor no alto
+bscreen=3839 # begin screen
+escreen=7680 # end screen
+topscreen=414 # top porque tem monitor no alto
 
 
 if [ "$1" == "" ]; then
@@ -27,7 +27,7 @@ while read -r line ; do
     then
       if [ "$top" -gt "$topscreen" ]
       then
-        if [ "$workspace" -eq "$cw" ]
+        if [ "$workspace" = "$cw" ] || [ "$cw" = "all" ]
         then
           if [ -z "$wid" ]
           then
@@ -46,5 +46,5 @@ if [ "$choice" == "" ]; then
 fi
 
 wid=$(echo -e "$lines" | grep "$choice" | awk '{ print $1 }')
-wmctrl -s $cw && sleep 0.01s
+# wmctrl -s $cw && sleep 0.01s
 wmctrl -i -a $wid

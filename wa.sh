@@ -2,7 +2,8 @@
 
 # janelas do primeiro monitor workspace atual
 
-screen=1080
+screen=3840
+topscreen=414
 
 if [ "$1" == "" ]; then
   cw=$(wmctrl -d | sed -n 's/^\([0-9]\+\) *\*.*/\1/p') # current workspace
@@ -14,10 +15,11 @@ wid=''
 lines=''
 while read -r line ; do
   width=$(echo $line | awk '{ print $3 }')
+  top=$(echo $line | awk '{ print $4 }')
   workspace=$(echo $line | awk '{ print $2 }')
-  if [ "$width" -lt "$screen" ]
+  if [ "$width" -lt "$screen" ] && [ "$width" -gt -9000 ] && [ "$top" -gt "$topscreen" ]
   then
-    if [ "$workspace" -eq "$cw" ]
+    if [ "$workspace" = "$cw" ] || [ "$cw" = "all" ]
     then
       if [ -z "$wid" ]
       then
@@ -34,5 +36,5 @@ if [ "$choice" == "" ]; then
 fi
 
 wid=$(echo -e "$lines" | grep "$choice" | awk '{ print $1 }')
-wmctrl -s $cw && sleep 0.01s
+# wmctrl -s $cw && sleep 0.01s
 wmctrl -i -a $wid
