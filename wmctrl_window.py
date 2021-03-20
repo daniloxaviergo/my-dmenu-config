@@ -9,7 +9,9 @@ class WmctrlWindow():
     win_attrs    = re.split(r'\s+', self.str_win)
     
     self.id         = win_attrs[0]
+    self.klass      = win_attrs[6].split('.')[0]
     self.name       = re.sub(r'^(xavier|N\/A)', '', ''.join(win_attrs[6:]))
+    self.kname      = self.klass + ' ' + ' '.join(win_attrs[8:])
     self.workspace  = int(win_attrs[1])
     self.left       = int(win_attrs[2])
     self.top        = int(win_attrs[3])
@@ -23,7 +25,7 @@ class WmctrlWindow():
     self.monitor4 = { 'x': 10560, 'y': -1 }
 
     # 
-    if self.left < self.monitor3['x'] and self.top > self.monitor3['y']:
+    if self.left < self.monitor3['x'] and self.left >= self.monitor2['x'] and self.top > self.monitor3['y']:
       self.monitor = 3
     elif self.left < self.monitor1['x'] and self.top > self.monitor1['y']:
       self.monitor = 1
