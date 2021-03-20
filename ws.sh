@@ -31,8 +31,16 @@ while read -r line ; do
         then
           if [ -z "$wid" ]
           then
-            line=$(echo $line | sed 's/[\]//g' | awk '{ s = ""; for (i = 9; i <= NF; i++) s = s $i " "; print $1, $7, s }')
-            lines="$line\n$lines"
+            linne=$(echo $line | sed 's/[\]//g' | awk '{ s = ""; for (i = 9; i <= NF; i++) s = s $i " "; print $1, $7, s }')
+            windowid=$(echo $line | awk '{ print $1 }')
+            wwworkspace=$(echo $line | awk '{ print $2 }')
+            title=$(echo $line | sed 's/[\]//g' | awk '{ s = ""; for (i = 8; i <= NF; i++) s = s $i " "; print $7, s }')
+            linne="$windowid k$((wwworkspace+1)) $title"
+            lines="$linne\n$lines"
+
+            # old
+            # line=$(echo $line | sed 's/[\]//g' | awk '{ s = ""; for (i = 9; i <= NF; i++) s = s $i " "; print $1, $7, s }')
+            # lines="$line\n$lines"
           fi
         fi
       fi

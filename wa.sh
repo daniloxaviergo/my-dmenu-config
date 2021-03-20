@@ -23,14 +23,22 @@ while read -r line ; do
     then
       if [ -z "$wid" ]
       then
-        line=$(echo $line | sed 's/[\]//g' | awk '{ s = ""; for (i = 9; i <= NF; i++) s = s $i " "; print $1, $7, s }')
-        lines="$line\n$lines"
+        linne=$(echo $line | sed 's/[\]//g' | awk '{ s = ""; for (i = 9; i <= NF; i++) s = s $i " "; print $1, $7, s }')
+        windowid=$(echo $line | awk '{ print $1 }')
+        wwworkspace=$(echo $line | awk '{ print $2 }')
+        title=$(echo $line | sed 's/[\]//g' | awk '{ s = ""; for (i = 8; i <= NF; i++) s = s $i " "; print $7, s }')
+        linne="$windowid k$((wwworkspace+1)) $title"
+        lines="$linne\n$lines"
+
+        # old
+        # line=$(echo $line | sed 's/[\]//g' | awk '{ s = ""; for (i = 9; i <= NF; i++) s = s $i " "; print $1, $7, s }')
+        # lines="$line\n$lines"
       fi
     fi
   fi
 done < <(wmctrl -dliGx)
 
-choice=$(echo -e "$lines" | awk '{ s = ""; for (i = 2; i <= NF; i++) s = s $i " "; print s }' | dmenu -i -l 20 -b -m 3 -fn Monospace-16:normal)
+choice=$(echo -e "$lines" | awk '{ s = ""; for (i = 2; i <= NF; i++) s = s $i " "; print s }' | dmenu -i -l 20 -b -m 2 -fn Monospace-16:normal)
 if [ "$choice" == "" ]; then
   exit
 fi
