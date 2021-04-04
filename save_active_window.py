@@ -28,7 +28,7 @@ def main(argv):
       if len(win_id) == 0:
         continue
 
-      wmctrl_out = os.popen('wmctrl -dliGux | grep -i {win_id}'.format(win_id=win_id)).read()
+      wmctrl_out = os.popen('sleep 0.1; wmctrl -dliGux | grep -i {win_id}'.format(win_id=win_id)).read()
       wmctrl_out = wmctrl_out.split('\n')
       wmctrl_out.pop()
 
