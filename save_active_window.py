@@ -36,12 +36,19 @@ def main(argv):
         continue
 
       window = WmctrlWindow(wmctrl_out[0])
+      # ignore window switcher
+      if window.name == 'tk.TkN/Awindowswitcher':
+        continue
+
       str_json = open("/home/danilo/scripts/flip360_wids.json", "r").read()
       jjson = json.loads(str_json)
 
       key_json = 'm{m}{w}'.format(m=window.monitor, w=window.workspace)
-      jjson[key_json] = window.str_win
+      window_previous = WmctrlWindow(jjson[key_json])
+      if window.id == window_previous.id:
+        continue
 
+      jjson[key_json] = window.str_win
       flip360_wids = open("/home/danilo/scripts/flip360_wids.json", "w")
       flip360_wids.write(json.dumps(jjson))
       flip360_wids.close()
