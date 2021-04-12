@@ -7,14 +7,18 @@ import sys
 import dmenu
 import re
 
-bus = dbus.SessionBus()
 def get_track_rhythmbox3(bus):
   try:
     obj = bus.get_object('org.gnome.Rhythmbox3', '/org/mpris/MediaPlayer2')
     iface2 = dbus.Interface(obj, 'org.freedesktop.DBus.Properties')
 
     metadata = iface2.Get('org.mpris.MediaPlayer2.Player', 'Metadata')
-    artist = metadata.get(dbus.String(u'xesam:artist'))[0]
+
+    artist = metadata.get(dbus.String(u'xesam:artist'))
+    if not artist:
+      return 'Não iniciado'
+
+    artist = artist[0]
     album = metadata.get(dbus.String(u'xesam:album'))
     title = metadata.get(dbus.String(u'xesam:title'))
     return album + ' ' + artist + ' ' + title
@@ -48,6 +52,9 @@ def get_track_libet(bus):
 
     current_song = iface.get_dbus_method('CurrentSong')
     metadata = current_song()
+
+    if not metadata.get('~filename', None) or metadata.get('~mountpoint', None):
+      return 'Não iniciado'
 
     return re.sub(metadata['~mountpoint'] + '/', '', metadata['~filename']).encode('utf-8')
   except dbus.exceptions.DBusException:
@@ -89,6 +96,7 @@ def playpause_libet(bus):
   except dbus.exceptions.DBusException:
     return
 
+bus = dbus.SessionBus()
 list_to_show = [
   'Rhythmbox3 || ' + get_track_rhythmbox3(bus),
   'SMPlayer || ' + get_track_smplayer(bus),
