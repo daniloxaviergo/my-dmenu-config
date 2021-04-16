@@ -13,6 +13,7 @@ def main(argv):
   display = Display()
   root = display.screen().root
   root.change_attributes(event_mask=X.PropertyChangeMask | X.SubstructureNotifyMask)
+  skip_windows = ['tk.TkN/Awindowswitcher', 'xfce4-appfinder.Xfce4-appfinderxavierApplicationFinder']
 
   NET_ACTIVE_WINDOW = display.intern_atom('_NET_ACTIVE_WINDOW')
 
@@ -37,7 +38,7 @@ def main(argv):
 
       window = WmctrlWindow(wmctrl_out[0])
       # ignore window switcher
-      if window.name == 'tk.TkN/Awindowswitcher':
+      if window.name in skip_windows:
         continue
 
       str_json = open("/home/danilo/scripts/flip360_wids.json", "r").read()
