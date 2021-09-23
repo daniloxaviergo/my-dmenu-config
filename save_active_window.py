@@ -45,6 +45,9 @@ def main(argv):
       jjson = json.loads(str_json)
 
       key_json = 'm{m}{w}'.format(m=window.monitor, w=window.workspace)
+      if jjson.get(key_json, None) == None:
+        continue
+
       window_previous = WmctrlWindow(jjson[key_json])
       if window.id == window_previous.id:
         continue
