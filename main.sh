@@ -307,7 +307,7 @@ if [ "$func" == "aaa" ]; then
 fi
 
 if [ "$func" == ".clock" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m1 gnome-clocks.Gnome-clocks
+  /home/danilo/scripts/dmenu/focus_class_name.py k1m1 org.gnome.clocks.org.gnome.clocks
 fi
 
 if [ "$func" == ".zapzap" ]; then
