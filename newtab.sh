@@ -25,5 +25,5 @@ fi
 
 if [ "$browser" == "chrome" ]; then
   wmctrl -s 0 && sleep 0.01s
-  /opt/google/chrome/google-chrome "${url}" &
+  /opt/google/chrome/google-chrome-stable "${url}" &
 fi
