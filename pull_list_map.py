@@ -35,6 +35,6 @@ os.popen('/home/danilo/scripts/dmenu/focus_class_name.py {class_window}'.format(
 
 time.sleep(0.2)
 
-os.popen('google-chrome {pull_url}'.format(pull_url=item['url'])).read()
+os.popen('google-chrome-stable {pull_url}'.format(pull_url=item['url'])).read()
 
 sys.exit()
