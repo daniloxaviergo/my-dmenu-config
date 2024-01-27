@@ -80,302 +80,332 @@ nlist=$list$list_windows
 choice=$(echo -e "$nlist" | dmenu -i -l 20 -b -m 3 -fn Monospace-16:normal)
 func=$(echo $choice | awk '{ print $1 }')
 
-echo "$func" >> /home/danilo/scripts/dmenu/history
+# echo "$func" >> /home/danilo/scripts/dmenu/history
 
-if [ "$func" == ".r" ]; then
-  $(/home/danilo/scripts/goto_saved_window.py s6)
-fi
+# if [ "$func" == ".r" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.py s6)
+# fi
 
-if [ "$func" == ".rr" ]; then
-  $(/home/danilo/scripts/goto_saved_window.py s9)
-fi
+# if [ "$func" == ".rr" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.py s9)
+# fi
 
-if [ "$func" == ".rrr" ]; then
-  $(/home/danilo/scripts/goto_saved_window.py s3)
-fi
+# if [ "$func" == ".rrr" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.py s3)
+# fi
 
 if [ "$func" == ".s" ]; then
   $(/home/danilo/scripts/goto_saved_window.py s5)
 fi
 
-if [ "$func" == ".ss" ]; then
-  $(/home/danilo/scripts/goto_saved_window.py s8)
+if [ "$func" == ".binance" ]; then
+  /home/danilo/scripts/dmenu/focus_class_name.py k1m1 binance.Binance &
 fi
 
-if [ "$func" == ".sss" ]; then
-  $(/home/danilo/scripts/goto_saved_window.py s2)
+if [ "$func" == ".note" ]; then
+  /home/danilo/scripts/dmenu/focus_class_name.py k1m1 org.remmina.Remmina.org.remmina.Remmina 1 &
 fi
 
-if [ "$func" == ".g" ]; then
-  $(/home/danilo/scripts/goto_saved_window.py s4)
+if [ "$func" == ".angler_git" ]; then
+  /home/danilo/scripts/tilix_list_map.py 'git angler | angler git | gitangler'
 fi
 
-if [ "$func" == ".gg" ]; then
-  $(/home/danilo/scripts/goto_saved_window.py s7)
+if [ "$func" == ".angler_rc" ]; then
+  /home/danilo/scripts/tilix_list_map.py 'rc rails angler console | angler rc console rails | dxfac'
 fi
 
-if [ "$func" == ".ggg" ]; then
-  $(/home/danilo/scripts/goto_saved_window.py s1)
+if [ "$func" == ".sh_freqtrade" ]; then
+  /home/danilo/scripts/tilix_list_map.py 'freqtrade | freq1 | trade'
 fi
 
-if [ "$func" == "wa" ]; then
-  bash /home/danilo/scripts/dmenu/wa.sh
-fi
+# if [ "$func" == ".ss" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.py s8)
+# fi
 
-if [ "$func" == "ws" ]; then
-  bash /home/danilo/scripts/dmenu/ws.sh
-fi
+# if [ "$func" == ".sss" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.py s2)
+# fi
 
-if [ "$func" == "wd" ]; then
-  bash /home/danilo/scripts/dmenu/wd.sh
-fi
+# if [ "$func" == ".g" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.py s4)
+# fi
 
-if [ "$func" == "wf" ]; then
-  bash /home/danilo/scripts/dmenu/wf.sh
-fi
+# if [ "$func" == ".gg" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.py s7)
+# fi
 
-if [ "$func" == ".ka" ]; then
-  wmctrl -s 0
-fi
+# if [ "$func" == ".ggg" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.py s1)
+# fi
 
-if [ "$func" == ".ks" ]; then
-  wmctrl -s 1
-fi
+# if [ "$func" == "wa" ]; then
+#   bash /home/danilo/scripts/dmenu/wa.sh
+# fi
 
-if [ "$func" == ".kd" ]; then
-  wmctrl -s 2
-fi
+# if [ "$func" == "ws" ]; then
+#   bash /home/danilo/scripts/dmenu/ws.sh
+# fi
 
-if [ "$func" == "dxpaste" ]; then
-  /home/danilo/scripts/select_copy.py &
-fi
+# if [ "$func" == "wd" ]; then
+#   bash /home/danilo/scripts/dmenu/wd.sh
+# fi
 
-if [ "$func" == "dxpaste2" ]; then
-  xfce4-popup-clipman
-fi
+# if [ "$func" == "wf" ]; then
+#   bash /home/danilo/scripts/dmenu/wf.sh
+# fi
 
-if [ "$func" == "ncsearch" ]; then
-  bash /home/danilo/scripts/dmenu/search_browser.sh chromium
-fi
+# if [ "$func" == ".ka" ]; then
+#   wmctrl -s 0
+# fi
 
-if [ "$func" == "ngsearch" ]; then
-  bash /home/danilo/scripts/dmenu/search_browser.sh chrome
-fi
+# if [ "$func" == ".ks" ]; then
+#   wmctrl -s 1
+# fi
 
-if [ "$func" == "kwaa" ]; then
-  bash /home/danilo/scripts/dmenu/wa.sh 0
-fi
+# if [ "$func" == ".kd" ]; then
+#   wmctrl -s 2
+# fi
 
-if [ "$func" == "kwsa" ]; then
-  bash /home/danilo/scripts/dmenu/wa.sh 1
-fi
+# if [ "$func" == "dxpaste" ]; then
+#   /home/danilo/scripts/select_copy.py &
+# fi
 
-if [ "$func" == "kwda" ]; then
-  bash /home/danilo/scripts/dmenu/wa.sh 2
-fi
+# if [ "$func" == "dxpaste2" ]; then
+#   xfce4-popup-clipman
+# fi
 
-if [ "$func" == "kwas" ]; then
-  bash /home/danilo/scripts/dmenu/ws.sh 0
-fi
+# if [ "$func" == "ncsearch" ]; then
+#   bash /home/danilo/scripts/dmenu/search_browser.sh chromium
+# fi
 
-if [ "$func" == "kwss" ]; then
-  bash /home/danilo/scripts/dmenu/ws.sh 1
-fi
+# if [ "$func" == "ngsearch" ]; then
+#   bash /home/danilo/scripts/dmenu/search_browser.sh chrome
+# fi
 
-if [ "$func" == "kwds" ]; then
-  bash /home/danilo/scripts/dmenu/ws.sh 2
-fi
+# if [ "$func" == "kwaa" ]; then
+#   bash /home/danilo/scripts/dmenu/wa.sh 0
+# fi
 
-if [ "$func" == "kwad" ]; then
-  bash /home/danilo/scripts/dmenu/wd.sh 0
-fi
+# if [ "$func" == "kwsa" ]; then
+#   bash /home/danilo/scripts/dmenu/wa.sh 1
+# fi
 
-if [ "$func" == "kwsd" ]; then
-  bash /home/danilo/scripts/dmenu/wd.sh 1
-fi
+# if [ "$func" == "kwda" ]; then
+#   bash /home/danilo/scripts/dmenu/wa.sh 2
+# fi
 
-if [ "$func" == "kwdd" ]; then
-  bash /home/danilo/scripts/dmenu/wd.sh 2
-fi
+# if [ "$func" == "kwas" ]; then
+#   bash /home/danilo/scripts/dmenu/ws.sh 0
+# fi
 
-if [ "$func" == "kwaf" ]; then
-  bash /home/danilo/scripts/dmenu/wf.sh 0
-fi
+# if [ "$func" == "kwss" ]; then
+#   bash /home/danilo/scripts/dmenu/ws.sh 1
+# fi
 
-if [ "$func" == "kwsf" ]; then
-  bash /home/danilo/scripts/dmenu/wd.sh 1
-fi
+# if [ "$func" == "kwds" ]; then
+#   bash /home/danilo/scripts/dmenu/ws.sh 2
+# fi
 
-if [ "$func" == "kwdf" ]; then
-  bash /home/danilo/scripts/dmenu/wd.sh 2
-fi
+# if [ "$func" == "kwad" ]; then
+#   bash /home/danilo/scripts/dmenu/wd.sh 0
+# fi
 
-if [ "$func" == "newtab" ]; then
-  bash /home/danilo/scripts/dmenu/newtab.sh
-fi
+# if [ "$func" == "kwsd" ]; then
+#   bash /home/danilo/scripts/dmenu/wd.sh 1
+# fi
 
-if [ "$func" == "ft1" ]; then
-  bash /home/danilo/scripts/dmenu/ft.sh 1 &
-fi
+# if [ "$func" == "kwdd" ]; then
+#   bash /home/danilo/scripts/dmenu/wd.sh 2
+# fi
 
-if [ "$func" == "ft2" ]; then
-  bash /home/danilo/scripts/dmenu/ft.sh 2 &
-fi
+# if [ "$func" == "kwaf" ]; then
+#   bash /home/danilo/scripts/dmenu/wf.sh 0
+# fi
 
-if [ "$func" == "ft3" ]; then
-  bash /home/danilo/scripts/dmenu/ft.sh 3 &
-fi
+# if [ "$func" == "kwsf" ]; then
+#   bash /home/danilo/scripts/dmenu/wd.sh 1
+# fi
 
-if [ "$func" == "ft4" ]; then
-  bash /home/danilo/scripts/dmenu/ft.sh 4 &
-fi
+# if [ "$func" == "kwdf" ]; then
+#   bash /home/danilo/scripts/dmenu/wd.sh 2
+# fi
 
-if [ "$func" == ".rft1" ]; then
-  $(/home/danilo/scripts/goto_saved_window.js s6)
-  bash /home/danilo/scripts/dmenu/ft.sh 1 &
-fi
+# if [ "$func" == "newtab" ]; then
+#   bash /home/danilo/scripts/dmenu/newtab.sh
+# fi
 
-if [ "$func" == ".rft2" ]; then
-  $(/home/danilo/scripts/goto_saved_window.js s6)
-  bash /home/danilo/scripts/dmenu/ft.sh 2 &
-fi
+# if [ "$func" == "ft1" ]; then
+#   bash /home/danilo/scripts/dmenu/ft.sh 1 &
+# fi
 
-if [ "$func" == ".rft3" ]; then
-  $(/home/danilo/scripts/goto_saved_window.js s6)
-  bash /home/danilo/scripts/dmenu/ft.sh 3 &
-fi
+# if [ "$func" == "ft2" ]; then
+#   bash /home/danilo/scripts/dmenu/ft.sh 2 &
+# fi
 
-if [ "$func" == ".rft4" ]; then
-  $(/home/danilo/scripts/goto_saved_window.js s6)
-  bash /home/danilo/scripts/dmenu/ft.sh 4 &
-fi
+# if [ "$func" == "ft3" ]; then
+#   bash /home/danilo/scripts/dmenu/ft.sh 3 &
+# fi
 
-if [ "$func" == ".sft1" ]; then
-  $(/home/danilo/scripts/goto_saved_window.js s5)
-  bash /home/danilo/scripts/dmenu/ft.sh 1 &
-fi
+# if [ "$func" == "ft4" ]; then
+#   bash /home/danilo/scripts/dmenu/ft.sh 4 &
+# fi
 
-if [ "$func" == ".sft2" ]; then
-  $(/home/danilo/scripts/goto_saved_window.js s5)
-  bash /home/danilo/scripts/dmenu/ft.sh 2 &
-fi
+# if [ "$func" == ".rft1" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.js s6)
+#   bash /home/danilo/scripts/dmenu/ft.sh 1 &
+# fi
 
-if [ "$func" == ".sft3" ]; then
-  $(/home/danilo/scripts/goto_saved_window.js s5)
-  bash /home/danilo/scripts/dmenu/ft.sh 3 &
-fi
+# if [ "$func" == ".rft2" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.js s6)
+#   bash /home/danilo/scripts/dmenu/ft.sh 2 &
+# fi
 
-if [ "$func" == ".sft4" ]; then
-  $(/home/danilo/scripts/goto_saved_window.js s5)
-  bash /home/danilo/scripts/dmenu/ft.sh 4 &
-fi
+# if [ "$func" == ".rft3" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.js s6)
+#   bash /home/danilo/scripts/dmenu/ft.sh 3 &
+# fi
 
-if [ "$func" == "kwa" ]; then
-  bash /home/danilo/scripts/dmenu/kw.sh 0
-fi
+# if [ "$func" == ".rft4" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.js s6)
+#   bash /home/danilo/scripts/dmenu/ft.sh 4 &
+# fi
 
-if [ "$func" == "kws" ]; then
-  bash /home/danilo/scripts/dmenu/kw.sh 1
-fi
+# if [ "$func" == ".sft1" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.js s5)
+#   bash /home/danilo/scripts/dmenu/ft.sh 1 &
+# fi
 
-if [ "$func" == "kwd" ]; then
-  bash /home/danilo/scripts/dmenu/kw.sh 2
-fi
+# if [ "$func" == ".sft2" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.js s5)
+#   bash /home/danilo/scripts/dmenu/ft.sh 2 &
+# fi
 
-if [ "$func" == ".slack" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m4 slack.Slack &
-fi
+# if [ "$func" == ".sft3" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.js s5)
+#   bash /home/danilo/scripts/dmenu/ft.sh 3 &
+# fi
 
-if [ "$func" == ".music" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m1 rhythmbox.Rhythmbox &
-fi
+# if [ "$func" == ".sft4" ]; then
+#   $(/home/danilo/scripts/goto_saved_window.js s5)
+#   bash /home/danilo/scripts/dmenu/ft.sh 4 &
+# fi
 
-if [ "$func" == ".musicp" ]; then
-  rhythmbox-client --play-pause
-fi
+# if [ "$func" == "kwa" ]; then
+#   bash /home/danilo/scripts/dmenu/kw.sh 0
+# fi
 
-if [ "$func" == "a" ]; then
+# if [ "$func" == "kws" ]; then
+#   bash /home/danilo/scripts/dmenu/kw.sh 1
+# fi
+
+# if [ "$func" == "kwd" ]; then
+#   bash /home/danilo/scripts/dmenu/kw.sh 2
+# fi
+
+# if [ "$func" == ".slack" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m3 slack.Slack &
+# fi
+
+# if [ "$func" == ".music" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 rhythmbox.Rhythmbox &
+# fi
+
+# if [ "$func" == ".musicp" ]; then
+#   rhythmbox-client --play-pause
+# fi
+
+if [ "$func" == ".a" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome &
 fi
 
-if [ "$func" == "aa" ]; then
+if [ "$func" == ".aa" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 google-chrome.Google-chrome &
 fi
 
-if [ "$func" == "aaa" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome-beta.Google-chrome-beta &
+if [ "$func" == ".b" ]; then
+  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 brave-browser.Brave-browser 0 &
 fi
+
+if [ "$func" == ".bb" ]; then
+  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 brave-browser.Brave-browser 1 &
+fi
+
+# if [ "$func" == "aaa" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m4 google-chrome-beta.Google-chrome-beta &
+# fi
 
 if [ "$func" == ".clock" ]; then
   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 org.gnome.clocks.org.gnome.clocks
 fi
 
-if [ "$func" == ".zapzap" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
-  /home/danilo/scripts/dmenu/send_key.py ctrl1 &
-fi
+# if [ "$func" == ".zapzap" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
+#   /home/danilo/scripts/dmenu/send_key.py ctrl1 &
+# fi
 
-if [ "$func" == ".gmail" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
-  /home/danilo/scripts/dmenu/send_key.py ctrl2 &
-fi
+# if [ "$func" == ".gmail" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
+#   /home/danilo/scripts/dmenu/send_key.py ctrl2 &
+# fi
 
-if [ "$func" == ".circle" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
-  /home/danilo/scripts/dmenu/send_key.py ctrl3 &
-fi
+# if [ "$func" == ".circle" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
+#   /home/danilo/scripts/dmenu/send_key.py ctrl3 &
+# fi
 
-if [ "$func" == ".jira" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
-  /home/danilo/scripts/dmenu/send_key.py ctrl4 &
-fi
+# if [ "$func" == ".jira" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
+#   /home/danilo/scripts/dmenu/send_key.py ctrl4 &
+# fi
 
-if [ "$func" == ".heroku" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
-  /home/danilo/scripts/dmenu/send_key.py ctrl5 &
-fi
+# if [ "$func" == ".heroku" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
+#   /home/danilo/scripts/dmenu/send_key.py ctrl5 &
+# fi
 
-if [ "$func" == ".amazon" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
-  /home/danilo/scripts/dmenu/send_key.py ctrl6 &
-fi
+# if [ "$func" == ".amazon" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
+#   /home/danilo/scripts/dmenu/send_key.py ctrl6 &
+# fi
 
-if [ "$func" == ".hubspot" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k1m1 google-chrome.Google-chrome
-  /home/danilo/scripts/dmenu/send_key.py ctrl1 &
-fi
+# if [ "$func" == ".hubspot" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k1m1 google-chrome.Google-chrome
+#   /home/danilo/scripts/dmenu/send_key.py ctrl1 &
+# fi
 
-if [ "$func" == ".skip" ]; then
-  /home/danilo/scripts/dmenu/skip_add.py
-fi
+# if [ "$func" == ".skip" ]; then
+#   /home/danilo/scripts/dmenu/skip_add.py
+# fi
 
-if [ "$func" == ".reload" ]; then
-  /home/danilo/scripts/dmenu/reload_list_windows.sh
-fi
+# if [ "$func" == ".reload" ]; then
+#   /home/danilo/scripts/dmenu/reload_list_windows.sh
+# fi
 
-firstChar=$(echo "$func" | awk '{print substr($0,1,1)}')
-monitor=$(echo "$func" | awk '{print substr($0,3,1)}')
+# firstChar=$(echo "$func" | awk '{print substr($0,1,1)}')
+# monitor=$(echo "$func" | awk '{print substr($0,3,1)}')
 
-if [ "$firstChar" == "k" ] && [ "$monitor" == "m" ]; then
-  /home/danilo/scripts/dmenu/goto_list_windows.sh "$choice"
-fi
+# if [ "$firstChar" == "k" ] && [ "$monitor" == "m" ]; then
+#   /home/danilo/scripts/dmenu/goto_list_windows.sh "$choice"
+# fi
 
-if [ "$func" == ".ui1" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k2m1 chromium.Chromium
-  /home/danilo/scripts/dmenu/send_key.py ctrl2 &
-fi
+# if [ "$func" == ".ui1" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k2m1 chromium.Chromium
+#   /home/danilo/scripts/dmenu/send_key.py ctrl2 &
+# fi
 
-if [ "$func" == ".ui2" ]; then
-  /home/danilo/scripts/dmenu/focus_class_name.py k2m1 chromium.Chromium
-  /home/danilo/scripts/dmenu/send_key.py ctrl3 &
-fi
-
-if [ "$func" == "fff" ]; then
-  /home/danilo/scripts/thunar-open-file.py &
-fi
+# if [ "$func" == ".ui2" ]; then
+#   /home/danilo/scripts/dmenu/focus_class_name.py k2m1 chromium.Chromium
+#   /home/danilo/scripts/dmenu/send_key.py ctrl3 &
+# fi
 
 if [ "$func" == "ppp" ]; then
-  /home/danilo/scripts/pull_requests.py &
+  /home/danilo/scripts/pull_requests.py
 fi
 
-pkill dzen2
+if [ "$func" == ".github" ]; then
+  /home/danilo/scripts/dmenu/focus_class_name.py k1m2 google-chrome.Google-chrome
+  sleep 0.2
+  google-chrome-stable 'https://github.com/foxbit-group/anglerfish'
+fi
+
+# pkill dzen2
