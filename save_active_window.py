@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!//home/danilo/scripts/venv/bin/python
 
 import sys
 import os
